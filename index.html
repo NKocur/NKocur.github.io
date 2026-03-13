@@ -137,7 +137,7 @@
                 PDF
               </a>` : ""}
           </div>
-          <button class="discuss-btn" onclick="toggleDiscussion(this, ${JSON.stringify(p.title)})">
+          <button class="discuss-btn" data-title="${escHtml(p.title)}" onclick="toggleDiscussion(this)">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
             Discussion
           </button>
@@ -157,7 +157,8 @@
     renderPapers();
 
     // ── Giscus per-paper discussion ───────────────────────────
-    function toggleDiscussion(btn, paperTitle) {
+    function toggleDiscussion(btn) {
+      const paperTitle = btn.dataset.title;
       const wrap = btn.nextElementSibling;
       const isOpen = btn.classList.toggle("open");
       wrap.style.display = isOpen ? "block" : "none";
