@@ -11,21 +11,12 @@
 
 const PAPERS = [
   {
-    title: "Example: Autonomous Agents with Dynamic Goal Revision",
-    year: 2025,
+    title: "TRACE: Trajectory-Grounded Anti-Clustered Episodic Retrieval for LLM Agent Memory",
+    year: 2026,
     venue: "Preprint",
     abstract:
-      "We introduce a framework for autonomous agents capable of revising their own goal structures in response to environmental feedback, reducing task failure rates by 34% across benchmark environments.",
-    pdf: "papers/example-paper.pdf",
-    tags: ["agents", "autonomy", "reinforcement learning"],
-  },
-  {
-    title: "Example: Emergent Communication in Multi-Agent Systems",
-    year: 2024,
-    venue: "NeurIPS 2024",
-    abstract:
-      "An investigation into how grounded language emerges spontaneously between agents trained in shared cooperative environments, with analysis of vocabulary structure and communicative efficiency.",
-    pdf: null,
-    tags: ["multi-agent", "emergent language", "communication"],
+      "Every existing memory retrieval method for LLM agents frames retrieval as query-to-memory similarity matching — a paradigm with four structural weaknesses: query-state mismatch, semantic co-clustering, causal blindness in temporal supersession, and positional bias in context assembly. TRACE replaces cosine similarity with a principled Marginal Epistemic Utility (MEU) formulation built on five components: a Trajectory Encoder that aggregates the agent's full reasoning chain via exponentially-decayed weighted averaging; an Atomic Query Decomposer that breaks composite queries into independent sub-questions with one-to-one memory assignment; a Causal Validity Graph (CVG) that tracks which memories causally supersede others; a Temporal Neighborhood Expander that recovers date and duration facts that embed weakly on semantics alone; and a Position-Optimal Assembler that exploits the U-shaped transformer attention profile. The MEU function is provably submodular, guaranteeing a (1−1/e) approximation of optimal selection. On a seven-scenario in-house benchmark, TRACE achieves 82.7% F1 (89.0% recall, 78.9% precision) vs. H-MEM's 63.2% F1 — a +19.5 pp gap — winning all seven scenarios with 0% False Affirmation Rate. On public benchmarks (LoCoMo, HotpotQA, MuSiQue, FRAMES, EverMemBench), TRACE and H-MEM reach near-parity overall (80.9% vs 79.6% macro retrieval F1), with TRACE stronger on multi-hop reasoning and H-MEM stronger on structured factual retrieval.",
+    pdf: "papers/TRACE.pdf",
+    tags: ["agents", "memory", "retrieval", "multi-hop reasoning", "LLMs"],
   },
 ];
