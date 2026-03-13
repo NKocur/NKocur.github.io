@@ -137,6 +137,11 @@
                 PDF
               </a>` : ""}
           </div>
+          <button class="discuss-btn" onclick="toggleDiscussion(this, ${JSON.stringify(p.title)})">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            Discussion
+          </button>
+          <div class="giscus-wrap" style="display:none;"></div>
         </article>
       `).join("");
     }
@@ -150,6 +155,40 @@
     }
 
     renderPapers();
+
+    // ── Giscus per-paper discussion ───────────────────────────
+    function toggleDiscussion(btn, paperTitle) {
+      const wrap = btn.nextElementSibling;
+      const isOpen = btn.classList.toggle("open");
+      wrap.style.display = isOpen ? "block" : "none";
+
+      // Only inject giscus once per card
+      if (isOpen && !wrap.dataset.loaded) {
+        wrap.dataset.loaded = "1";
+        const s = document.createElement("script");
+        s.src = "https://giscus.app/client.js";
+        s.setAttribute("data-repo", "NKocur/NKocur.github.io");
+        s.setAttribute("data-repo-id", "R_kgDORmZYYQ");
+        s.setAttribute("data-category", "General");
+        s.setAttribute("data-category-id", "DIC_kwDORmZYYc4C4U-t");
+        s.setAttribute("data-mapping", "specific");
+        s.setAttribute("data-term", paperTitle);
+        s.setAttribute("data-strict", "0");
+        s.setAttribute("data-reactions-enabled", "1");
+        s.setAttribute("data-emit-metadata", "0");
+        s.setAttribute("data-input-position", "bottom");
+        s.setAttribute("data-theme", "dark");
+        s.setAttribute("data-lang", "en");
+        s.setAttribute("crossorigin", "anonymous");
+        s.async = true;
+        wrap.appendChild(s);
+      }
+
+      btn.innerHTML = `
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        ${isOpen ? "Hide Discussion" : "Discussion"}
+      `;
+    }
   </script>
 </body>
 </html>

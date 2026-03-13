@@ -293,6 +293,34 @@ nav {
   text-decoration: none;
 }
 
+/* ── Discussion toggle ────────────────────────────────────── */
+.discuss-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  padding: 5px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+  margin-top: 16px;
+  width: 100%;
+  justify-content: center;
+}
+
+.discuss-btn:hover { border-color: var(--accent2); color: var(--accent2); }
+.discuss-btn.open  { border-color: var(--accent2); color: var(--accent2); }
+
+.giscus-wrap {
+  margin-top: 16px;
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+}
+
 /* ── Empty state ──────────────────────────────────────────── */
 .empty-state {
   text-align: center;
